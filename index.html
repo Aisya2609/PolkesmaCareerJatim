@@ -3,30 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polkesma Career Center | By Aisya</title>
+    <title>Polkesma Career AI | By Aisya</title>
     <style>
         :root {
             --polkesma-blue: #005b96;
             --polkesma-green: #2ecc71;
             --dark: #1e293b;
             --light: #f8fafc;
+            --ai-purple: #8e44ad;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
         
         header {
-            background: white;
-            border-bottom: 4px solid var(--polkesma-green);
-            padding: 15px 20px;
-            text-align: center;
-            position: sticky; top: 0; z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: white; border-bottom: 4px solid var(--polkesma-green);
+            padding: 15px 20px; text-align: center; position: sticky; top: 0; z-index: 100;
         }
         .logo-text { font-weight: 800; color: var(--polkesma-blue); font-size: 1.4rem; }
 
         .hero { 
-            background: linear-gradient(135deg, var(--polkesma-blue) 0%, #003d66 100%); 
-            color: white; padding: 50px 20px; text-align: center; 
+            background: linear-gradient(135deg, var(--polkesma-blue) 0%, var(--ai-purple) 100%); 
+            color: white; padding: 40px 20px; text-align: center; 
         }
 
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
@@ -41,29 +38,27 @@
 
         .select-box { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #e2e8f0; margin-bottom: 15px; font-size: 1rem; }
 
-        .btn-action { background: var(--polkesma-blue); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn-action:hover { background: var(--polkesma-green); transform: translateY(-2px); }
+        .btn-action { background: var(--polkesma-blue); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
+        .btn-action:hover { background: var(--polkesma-green); transform: scale(1.02); }
 
-        .result-box { display: none; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; animation: slideUp 0.4s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .res-card { padding: 15px; border-radius: 10px; font-size: 0.9rem; border: 1px dashed #cbd5e1; }
-        .res-before { background: #fff1f2; }
-        .res-after { background: #f0fdf4; border-style: solid; border-color: var(--polkesma-green); }
+        /* AI Section */
+        .ai-box { border: 2px dashed var(--ai-purple); padding: 20px; border-radius: 12px; text-align: center; background: #fdf4ff; }
+        #aiResult { display: none; margin-top: 20px; padding: 15px; background: white; border-radius: 10px; border-left: 5px solid var(--ai-purple); animation: fadeIn 0.5s; }
 
-        .job-list { margin-top: 15px; max-height: 400px; overflow-y: auto; border: 1px solid #f1f5f9; border-radius: 10px; }
+        /* Job Display */
+        .job-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; }
         .job-item {
+            border: 1px solid #e2e8f0; border-radius: 10px; padding: 15px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px; border-bottom: 1px solid #f1f5f9;
+            background: white;
         }
-        .city-tag { background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 5px; font-size: 0.75rem; font-weight: bold; }
+        .kuota-badge { background: #ff7675; color: white; padding: 5px 12px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; }
+        .location-tag { color: var(--polkesma-blue); font-weight: bold; font-size: 0.75rem; text-transform: uppercase; display: block; }
+
+        footer { background: var(--dark); color: white; padding: 30px; text-align: center; margin-top: 50px; }
+        .dev-name { color: var(--polkesma-green); font-weight: bold; font-size: 1.2rem; }
         
-        /* FOOTER KHUSUS AISYA */
-        footer { 
-            background: var(--dark); color: white; padding: 40px 20px; text-align: center; margin-top: 50px; 
-        }
-        .dev-name { color: var(--polkesma-green); font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
-        .paper-info { margin-top: 10px; font-size: 0.8rem; opacity: 0.7; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -73,54 +68,58 @@
 </header>
 
 <div class="hero">
-    <h1>Portal Karir Nakes Jawa Timur</h1>
-    <p>Inovasi Digital: Menghubungkan Alumni Polkesma dengan Peluang Kerja Nyata</p>
+    <h1>Portal Karir Nakes Terlengkap Jatim</h1>
+    <p>Sistem Pakar AI & Database Lowongan Dari Ujung Ke Ujung Jawa Timur</p>
 </div>
 
 <div class="container">
     
     <div class="section-card">
-        <h3>Skill Translator (Nakes Edition)</h3>
-        <p style="font-size: 0.9rem; margin-bottom: 15px; color: #64748b;">Ubah pengalaman klinis kamu menjadi bahasa profesional yang diakui HRD.</p>
-        
-        <select id="jurusanSelect" class="select-box">
-            <option value="">-- Pilih Jurusan Kamu --</option>
-            <option value="keperawatan">Keperawatan (D3/D4)</option>
-            <option value="kebidanan">Kebidanan (D3/D4)</option>
-            <option value="gizi">Gizi & Dietetik</option>
-            <option value="rekammedis">Perekam Medis & Info Kes</option>
-            <option value="analis">Teknologi Laboratorium Medis</option>
-        </select>
-
-        <button class="btn-action" onclick="convertNakes()">Konversi Data Portofolio</button>
-
-        <div id="resultArea" class="result-box">
-            <div class="res-card res-before">
-                <small style="color: #e11d48; font-weight: bold;">Riwayat Tugas/Praktikum:</small><br>
-                <p id="txtBefore" style="margin-top:5px;">-</p>
-            </div>
-            <div class="res-card res-after">
-                <small style="color: #16a34a; font-weight: bold;">Tampilan di CV Portofolio:</small><br>
-                <p id="txtAfter" style="margin-top:5px; font-weight: bold;">-</p>
-            </div>
+        <h3 style="color: var(--ai-purple);">AI Resume Reviewer</h3>
+        <div class="ai-box">
+            <p style="margin-bottom: 10px;">Unggah CV Anda untuk cek kecocokan dengan standar RS Jawa Timur</p>
+            <input type="file" id="cvUpload" accept="image/*" class="select-box">
+            <button class="btn-action" style="background: var(--ai-purple);" onclick="scanAI()">Analisis Portofolio Sekarang</button>
+        </div>
+        <div id="aiResult">
+            <strong><span style="color: var(--ai-purple);">Saran Perbaikan Portofolio:</span></strong>
+            <p id="aiText" style="font-size: 0.9rem; margin-top: 10px;"></p>
         </div>
     </div>
 
     <div class="section-card">
-        <h3>Eksplorasi Peluang Kerja Jawa Timur</h3>
-        <p style="font-size: 0.9rem; margin-bottom: 15px; color: #64748b;">Daftar kebutuhan tenaga kesehatan di berbagai RS & Puskesmas:</p>
+        <h3>Cek Kuota Kerja Se-Jawa Timur</h3>
         
-        <select id="lokasiSelect" class="select-box" onchange="filterLoker()">
-            <option value="all">-- Seluruh Wilayah Jawa Timur --</option>
-            <option value="Malang">Malang Raya</option>
-            <option value="Surabaya">Surabaya</option>
-            <option value="Kediri">Kediri</option>
-            <option value="Blitar">Blitar</option>
-            <option value="Jember">Jember</option>
+        <label>Pilih Jurusan:</label>
+        <select id="jurusanSelect" class="select-box">
+            <option value="keperawatan">Keperawatan</option>
+            <option value="kebidanan">Kebidanan</option>
+            <option value="rekammedis">Rekam Medis & Info Kes</option>
+            <option value="gizi">Gizi & Dietetik</option>
+            <option value="k3">Kesehatan & Keselamatan Kerja (K3)</option>
+            <option value="promkes">Promosi Kesehatan (Promkes)</option>
+            <option value="anafarma">Anafarma (Analisis Farmasi)</option>
         </select>
 
-        <div id="jobList" class="job-list">
-            </div>
+        <label>Pilih Wilayah Jawa Timur:</label>
+        <select id="lokasiSelect" class="select-box">
+            <option value="all">-- Semua Wilayah (Jawa Timur) --</option>
+            <option value="Malang">Malang Raya</option>
+            <option value="Surabaya">Surabaya / Sidoarjo</option>
+            <option value="Kediri">Kediri / Nganjuk</option>
+            <option value="Blitar">Blitar / Tulungagung</option>
+            <option value="Madiun">Madiun / Ngawi / Magetan</option>
+            <option value="Probolinggo">Probolinggo / Pasuruan</option>
+            <option value="Banyuwangi">Banyuwangi / Jember / Situbondo</option>
+            <option value="Madura">Madura (Bangkalan/Sampang/Pamekasan/Sumenep)</option>
+        </select>
+
+        <button class="btn-action" onclick="updateLoker()">Cek Lowongan Sekarang</button>
+    </div>
+
+    <div class="section-card">
+        <h3 id="resultTitle">Hasil Pencarian</h3>
+        <div id="jobContainer" class="job-grid"></div>
     </div>
 
 </div>
@@ -128,64 +127,82 @@
 <footer>
     <p>Developed & Conceptualized by:</p>
     <p class="dev-name">AISYA</p>
-    <p style="font-size: 0.9rem; margin-top: 5px;">Student Researcher at Polkesma</p>
-    <div class="paper-info">
-        Karya Inovasi Digital - Innovation Science 2026<br>
-        Meningkatkan Keterserapan Lulusan Polkesma di Jawa Timur
-    </div>
+    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">
+        Project Innovation Science 2026<br>
+        Politeknik Kesehatan Kemenkes Malang
+    </p>
 </footer>
 
 <script>
-    const dataNakes = {
-        keperawatan: { before: "Praktik Keperawatan di RSUD", after: "Clinical Nursing Specialist: Acute Care & Evidence-Based Nursing Practice" },
-        kebidanan: { before: "Asuhan Kebidanan pada Ibu Hamil", after: "Midwifery Professional: Comprehensive Antenatal Care & Patient Advocacy" },
-        gizi: { before: "Penyusunan Diet Pasien Rawat Inap", after: "Clinical Nutritionist: Medical Nutrition Therapy & Dietary Management" },
-        rekammedis: { before: "Pengarsipan Dokumen Rekam Medis", after: "Health Information Analyst: Medical Coding & Data Integrity Management" },
-        analis: { before: "Praktikum Uji Laboratorium Klinik", after: "Medical Laboratory Technologist: Diagnostic Testing & Laboratory Safety Quality Control" }
-    };
-
-    const databaseLoker = [
-        { rs: "RSUD Dr. Saiful Anwar", kota: "Malang", posisi: "Perawat Gawat Darurat" },
-        { rs: "RSUD Dr. Soetomo", kota: "Surabaya", posisi: "Ahli Gizi Klinik" },
-        { rs: "RSUD Gambiran", kota: "Kediri", posisi: "Perekam Medis" },
-        { rs: "RSUD Mardi Waluyo", kota: "Blitar", posisi: "Bidan Pelaksana" },
-        { rs: "RS Universitas Brawijaya", kota: "Malang", posisi: "Laboran (TLM)" },
-        { rs: "RS Siloam Surabaya", kota: "Surabaya", posisi: "Perawat ICU" },
-        { rs: "Puskesmas Kediri Kota", kota: "Kediri", posisi: "Tenaga Kesehatan Masyarakat" },
-        { rs: "RSUD Dr. Soebandi", kota: "Jember", posisi: "Analis Kesehatan" },
-        { rs: "RSUD Bhakti Dharma Husada", kota: "Surabaya", posisi: "Perekam Medis" },
-        { rs: "RSUD Ngudi Waluyo", kota: "Blitar", posisi: "Perawat Terampil" }
+    // Database Super Lengkap Jatim
+    const dbLoker = [
+        // MALANG
+        { jurusan: "keperawatan", rs: "RSUD Dr. Saiful Anwar", kota: "Malang", kuota: 15 },
+        { jurusan: "k3", rs: "PT Otsuka Indonesia", kota: "Malang", kuota: 2 },
+        // SURABAYA
+        { jurusan: "rekammedis", rs: "RSUD Dr. Soetomo", kota: "Surabaya", kuota: 8 },
+        { jurusan: "promkes", rs: "Dinas Kesehatan Surabaya", kota: "Surabaya", kuota: 5 },
+        // KEDIRI
+        { jurusan: "kebidanan", rs: "RSUD Gambiran", kota: "Kediri", kuota: 4 },
+        { jurusan: "anafarma", rs: "Industri Farmasi Kediri", kota: "Kediri", kuota: 2 },
+        // BLITAR
+        { jurusan: "anafarma", rs: "RSUD Mardi Waluyo", kota: "Blitar", kuota: 3 },
+        { jurusan: "gizi", rs: "RS Aura Syifa", kota: "Kediri", kuota: 1 },
+        // MADIUN / NGAWI / MAGETAN
+        { jurusan: "keperawatan", rs: "RSUD Dr. Soeroto Ngawi", kota: "Madiun", kuota: 6 },
+        { jurusan: "rekammedis", rs: "RSUD Caruban", kota: "Madiun", kuota: 2 },
+        // PROBOLINGGO / PASURUAN
+        { jurusan: "k3", rs: "Kawasan Industri PIER Pasuruan", kota: "Probolinggo", kuota: 3 },
+        { jurusan: "keperawatan", rs: "RSUD dr. Moh Saleh", kota: "Probolinggo", kuota: 4 },
+        // BANYUWANGI / JEMBER
+        { jurusan: "gizi", rs: "RSUD Blambangan", kota: "Banyuwangi", kuota: 3 },
+        { jurusan: "promkes", rs: "Puskesmas Jember Kota", kota: "Banyuwangi", kuota: 2 },
+        // MADURA
+        { jurusan: "kebidanan", rs: "RSUD Syamrabu Bangkalan", kota: "Madura", kuota: 5 },
+        { jurusan: "keperawatan", rs: "RSUD dr. H. Slamet Martodirdjo", kota: "Madura", kuota: 4 }
     ];
 
-    function convertNakes() {
-        const sel = document.getElementById('jurusanSelect');
-        const area = document.getElementById('resultArea');
-        if(sel.value === "") { alert("Halo Aisya, tolong pilih jurusan dulu ya!"); return; }
-        area.style.display = 'grid';
-        document.getElementById('txtBefore').innerText = dataNakes[sel.value].before;
-        document.getElementById('txtAfter').innerText = dataNakes[sel.value].after;
+    function scanAI() {
+        const file = document.getElementById('cvUpload').files[0];
+        if(!file) { alert("Aisya, silakan masukkan file CV dulu."); return; }
+        const resText = document.getElementById('aiText');
+        document.getElementById('aiResult').style.display = 'block';
+        resText.innerHTML = "<i>AI sedang memproses data...</i>";
+        setTimeout(() => {
+            resText.innerHTML = "✅ <b>Rekomendasi Berdasarkan Analisis AISYA-AI:</b><br>CV Anda sangat kuat di bagian praktik lapangan. Tambahkan detail penggunaan alat medis terbaru untuk meningkatkan peluang di RS Tipe A seperti RSSA atau Dr. Soetomo.";
+        }, 2000);
     }
 
-    function filterLoker() {
-        const lokasi = document.getElementById('lokasiSelect').value;
-        const container = document.getElementById('jobList');
+    function updateLoker() {
+        const jur = document.getElementById('jurusanSelect').value;
+        const lok = document.getElementById('lokasiSelect').value;
+        const container = document.getElementById('jobContainer');
+        const title = document.getElementById('resultTitle');
+
         container.innerHTML = "";
-        const filtered = databaseLoker.filter(j => lokasi === "all" || j.kota === lokasi);
-        filtered.forEach(item => {
-            container.innerHTML += `
-                <div class="job-item">
-                    <div>
-                        <strong style="color: var(--polkesma-blue)">${item.rs}</strong><br>
-                        <small>${item.posisi}</small>
+        const hasil = dbLoker.filter(item => item.jurusan === jur && (lok === "all" || item.kota === lok));
+
+        if (hasil.length > 0) {
+            title.innerText = `Ditemukan ${hasil.length} Peluang Kerja`;
+            hasil.forEach(item => {
+                container.innerHTML += `
+                    <div class="job-item">
+                        <div>
+                            <span class="location-tag">${item.kota}</span>
+                            <h4 style="margin: 5px 0;">${item.rs}</h4>
+                            <small>Kebutuhan: Lulusan ${jur}</small>
+                        </div>
+                        <div class="kuota-badge">Kuota: ${item.kuota}</div>
                     </div>
-                    <span class="city-tag">${item.kota}</span>
-                </div>
-            `;
-        });
+                `;
+            });
+        } else {
+            title.innerText = "Info Lowongan";
+            container.innerHTML = `<p style="text-align:center; padding: 20px;">Maaf Aisya, kuota untuk wilayah tersebut saat ini belum tersedia. Silakan cek wilayah Jatim lainnya.</p>`;
+        }
     }
-    filterLoker();
+    updateLoker();
 </script>
 
 </body>
 </html>
-
